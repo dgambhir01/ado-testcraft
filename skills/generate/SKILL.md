@@ -38,7 +38,7 @@ If the returned value is empty, stop:
 
 ### Step 1 — Fetch and validate the work item
 
-Use the Azure DevOps MCP to fetch the work item by ID. **Always pass the `project` parameter** with the value resolved in Step 0 — do not let the MCP server elicit it.
+Use the Azure DevOps MCP to fetch the work item by ID. **Always pass the `project` parameter** with the value resolved in Step 0 — do not let the MCP server elicit it. **Always fetch fresh data — never reuse work item data from a previous invocation in the same conversation. Work item state can change between calls.**
 
 **If the fetch fails or the ID does not exist**, stop:
 
