@@ -64,22 +64,24 @@ Or with a full ADO URL:
 | Story has title only, no description/AC | Warns content is too sparse, asks to confirm |
 | Story has description but no AC | Proceeds with a visible warning in the output |
 
-## Output format
+## Example output
 
-```text
-⚠️ No Acceptance Criteria found — test cases generated from Description only.
-   Recommend confirming AC with dev/PM before finalising.
+Given a User Story for a password-reset flow, the plugin generates:
 
 | # | Test Case Title | Type | Preconditions | Test Steps | Expected Result | Priority |
-|---|---|---|---|---|---|---|
-| 1 | Valid login with correct credentials | ✅ Positive | User is registered | ... | User is logged in | High |
-| 2 | Login with incorrect password | ❌ Negative | User is registered | ... | Error message shown | High |
-...
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | Reset password with valid registered email | ✅ Positive | User account exists; user is logged out | 1. Navigate to login page 2. Click "Forgot password" 3. Enter registered email 4. Submit | Reset link email is sent; success message displayed | High |
+| 2 | Reset password with unregistered email | ❌ Negative | No account exists for the email | 1. Navigate to "Forgot password" 2. Enter unregistered email 3. Submit | Generic message shown (no account enumeration); no email sent | High |
+| 3 | Submit reset form with empty email field | 🔲 Edge Case | User is on the forgot-password page | 1. Leave email field blank 2. Click Submit | Inline validation error: "Email is required" | Medium |
+| 4 | Reset link expires after 60 minutes (max TTL) | 📐 Boundary Value | Valid reset link generated | 1. Wait 60 min 2. Click the reset link | Link is invalid; user prompted to request a new one | High |
+| 5 | Reset link is valid at 59 minutes (just inside TTL) | 📐 Boundary Value | Valid reset link generated | 1. Wait 59 min 2. Click the reset link 3. Enter new password | Password updated successfully | High |
+| 6 | New password identical to current password | ❌ Negative | User has clicked a valid reset link | 1. Enter current password as new password 2. Submit | Error: "New password must differ from current password" | Medium |
+| 7 | Reset link can only be used once | 🔲 Edge Case | User has already used the reset link | 1. Click the same reset link again | Link is invalid; user prompted to request a new one | High |
 
-Summary
-- Positive: 4  Negative: 5  Edge: 3  Boundary: 2  — Total: 14
-- Suggested automation priority: TC-1, TC-2, TC-7
-```
+### Summary
+
+- ✅ Positive: 1 · ❌ Negative: 2 · 🔲 Edge Case: 2 · 📐 Boundary Value: 2 — **Total: 7**
+- Suggested automation priority: TC-1, TC-2, TC-4, TC-5, TC-7
 
 ## Offline testing
 

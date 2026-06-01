@@ -8,5 +8,6 @@
   },
   "homepage": "https://github.com/dgambhir01/ado-testcraft",
   "repository": "https://github.com/dgambhir01/ado-testcraft",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": ["testing", "qa", "azure-devops", "test-cases", "qe", "test-generation"]
 }
