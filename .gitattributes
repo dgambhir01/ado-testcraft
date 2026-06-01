@@ -1,0 +1,9 @@
+# Normalise line endings to LF in the repository
+* text=auto eol=lf
+
+# PowerShell scripts keep LF
+*.ps1 text eol=lf
+
+# JSON and Markdown
+*.json text eol=lf
+*.md   text eol=lf
