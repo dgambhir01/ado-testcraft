@@ -2,6 +2,8 @@
 
 A Claude Code plugin that reads Azure DevOps User Stories and generates structured, professional test cases — covering positive, negative, edge case, and boundary value scenarios — using QE best practices.
 
+Works with the **Claude Code CLI** and the **Claude Code VS Code extension**.
+
 ## What it does
 
 Provide a User Story ID or URL. The plugin fetches the story from Azure DevOps and outputs a ready-to-use test case table with:
@@ -12,7 +14,7 @@ Provide a User Story ID or URL. The plugin fetches the story from Azure DevOps a
 
 ## Prerequisites
 
-- [Claude Code](https://claude.ai/code) installed and authenticated
+- [Claude Code](https://claude.ai/code) — CLI or VS Code extension — installed and authenticated
 - An Azure DevOps Personal Access Token (PAT) with **Work Items (Read)** scope
 
 ## Setup
@@ -25,6 +27,8 @@ Provide a User Story ID or URL. The plugin fetches the story from Azure DevOps a
 
 ### 2 — Run the setup script
 
+Open a terminal (PowerShell, or the integrated terminal in VS Code) and run:
+
 ```powershell
 .\setup.ps1
 ```
@@ -33,13 +37,24 @@ You will be prompted for your organization name, project name, and PAT. The scri
 
 ### 3 — Install the plugin
 
+**CLI:**
+
 ```text
 /plugin install ado-testcraft@claude-plugins-official
 ```
 
-### 4 — Generate your first test cases
+**VS Code extension:** open the Claude Code chat panel and run the same command:
 
-Restart Claude Code, then:
+```text
+/plugin install ado-testcraft@claude-plugins-official
+```
+
+### 4 — Restart
+
+- **CLI:** restart the `claude` process
+- **VS Code extension:** close and reopen VS Code fully — a window reload is not enough to pick up new environment variables and the installed plugin
+
+### 5 — Generate your first test cases
 
 ```text
 /ado-testcraft:generate 12345
