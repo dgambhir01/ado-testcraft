@@ -18,3 +18,6 @@ Thumbs.db
 
 # Claude Code local settings (dev-only, not part of plugin distribution)
 .claude/
+
+# Internal team install guide — shared directly, not part of public repo
+TEAM_INSTALL.md
