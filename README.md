@@ -27,13 +27,24 @@ Provide a User Story ID or URL. The plugin fetches the story from Azure DevOps a
 
 ### 2 — Run the setup script
 
-Open a terminal (PowerShell, or the integrated terminal in VS Code) and run:
+Open a terminal and run the script for your platform:
+
+**Windows (PowerShell):**
 
 ```powershell
 .\setup.ps1
 ```
 
-You will be prompted for your organization name, project name, and PAT. The script stores them as user-level environment variables that survive reboots — no encoding, no profile editing.
+**macOS / Linux:**
+
+```bash
+chmod +x setup.sh && ./setup.sh
+```
+
+You will be prompted for your organization name, project name, and PAT. The script stores them as persistent environment variables — no manual profile editing required.
+
+- **Windows**: stored as user-level environment variables (survive reboots)
+- **macOS/Linux**: written to your shell profile (`~/.zshrc`, `~/.bashrc`, or `~/.profile`). Run `source ~/.zshrc` (or the relevant profile) after setup, then restart Claude Code.
 
 ### 3 — Install the plugin
 
