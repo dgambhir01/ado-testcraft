@@ -44,7 +44,7 @@ chmod +x setup.sh && ./setup.sh
 You will be prompted for your organization name, project name, and PAT. The script stores them as persistent environment variables — no manual profile editing required.
 
 - **Windows**: stored as user-level environment variables (survive reboots)
-- **macOS/Linux**: written to your shell profile (`~/.zshrc`, `~/.bashrc`, or `~/.profile`). Run `source ~/.zshrc` (or the relevant profile) after setup, then restart Claude Code.
+- **macOS/Linux**: written to your shell profile (`~/.zshrc`, `~/.bashrc`, or `~/.profile` — auto-detected). The script outputs the exact file it wrote to; run `source <that file>` after setup, then restart Claude Code.
 
 ### 3 — Install the plugin
 
