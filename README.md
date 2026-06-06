@@ -25,9 +25,9 @@ Provide a User Story ID or URL. The plugin fetches the story from Azure DevOps a
 2. Create a new token with **Work Items (Read)** scope
 3. Copy the token value
 
-### 2 — Run the setup script
+### 2 — Configure credentials
 
-Open a terminal and run the script for your platform:
+Run the setup script from a terminal — it stores your org, project, and PAT as persistent environment variables:
 
 **Windows (PowerShell):**
 
@@ -41,8 +41,6 @@ Open a terminal and run the script for your platform:
 chmod +x setup.sh && ./setup.sh
 ```
 
-You will be prompted for your organization name, project name, and PAT. The script stores them as persistent environment variables — no manual profile editing required.
-
 - **Windows**: stored as user-level environment variables (survive reboots)
 - **macOS/Linux**: written to your shell profile (`~/.zshrc`, `~/.bashrc`, or `~/.profile` — auto-detected). The script outputs the exact file it wrote to; run `source <that file>` after setup, then restart Claude Code.
 
@@ -54,11 +52,7 @@ You will be prompted for your organization name, project name, and PAT. The scri
 /plugin install ado-testcraft@claude-plugins-official
 ```
 
-**VS Code extension:** open the Claude Code chat panel and run the same command:
-
-```text
-/plugin install ado-testcraft@claude-plugins-official
-```
+**VS Code extension:** type `/manage plugin` in the Claude Code chat panel, search for `ado-testcraft`, and click **Install**.
 
 ### 4 — Restart
 
@@ -76,6 +70,10 @@ Or with a full ADO URL:
 ```text
 /ado-testcraft:generate https://dev.azure.com/myorg/myproject/_workitems/edit/12345
 ```
+
+---
+
+**Skipped Step 2, or need to update credentials?** Once the plugin is installed and Claude Code has been restarted, run `/ado-testcraft:setup` in the chat panel. It detects your platform and outputs the exact commands to paste into a terminal. Restart Claude Code once more after pasting.
 
 ## What the plugin validates before generating
 

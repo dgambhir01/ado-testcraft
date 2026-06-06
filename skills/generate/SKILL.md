@@ -23,7 +23,7 @@ The user will provide an Azure DevOps User Story ID (e.g. `12345`) or a full ADO
 
 Confirm the Azure DevOps MCP server is connected. If it is not available, stop:
 
-> "The Azure DevOps MCP server is not connected. Please check that ADO_ORG, ADO_PROJECT, and ADO_PAT environment variables are set and restart Claude Code."
+> "The Azure DevOps MCP server is not connected. Run `/ado-testcraft:setup` to configure your credentials, then restart Claude Code."
 
 **Resolve the project name from the environment.**
 
@@ -34,7 +34,7 @@ Read the `ADO_PROJECT` environment variable using a shell tool and remember the 
 
 If the returned value is empty, stop:
 
-> "ADO_PROJECT environment variable is not set. Please run `setup.ps1` to configure your Azure DevOps credentials."
+> "ADO_PROJECT environment variable is not set. Run `/ado-testcraft:setup` for step-by-step configuration."
 
 ### Step 1 — Fetch and validate the work item
 
