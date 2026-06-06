@@ -2,6 +2,22 @@
 
 All notable changes to ado-testcraft will be documented here.
 
+## [1.0.1] — 2026-06-06
+
+### Added
+
+- `/ado-testcraft:setup` skill — detects platform, checks current credential state, and outputs exact terminal commands for Windows, macOS, and Linux
+- `setup.sh` — interactive credential setup script for macOS and Linux
+
+### Fixed
+
+- `generate` error messages now point to `/ado-testcraft:setup` instead of `setup.ps1` (works for all platforms and VS Code installs)
+- VS Code extension install instruction corrected: type `/` → select **Manage plugins** (not `/plugin install`, which is CLI-only)
+- Credential setup in README now uses inline commands — works for marketplace installs without cloning the repo
+- Stale work item bug: skill now always fetches fresh data; never reuses data from a prior invocation in the same session
+
+---
+
 ## [1.0.0] — 2026-06-01
 
 ### Added

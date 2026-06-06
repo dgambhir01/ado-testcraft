@@ -1,7 +1,7 @@
 {
   "name": "ado-testcraft",
   "description": "Generates structured test cases from Azure DevOps User Stories",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "owner": {
     "name": "Dheeraj Gambhir"
   },
@@ -10,7 +10,7 @@
       "name": "ado-testcraft",
       "source": "./",
       "description": "Generates structured test cases from Azure DevOps User Stories. Covers positive, negative, edge cases, and boundary values using QE best practices.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "Dheeraj Gambhir"
       },
