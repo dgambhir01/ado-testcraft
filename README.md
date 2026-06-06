@@ -27,22 +27,45 @@ Provide a User Story ID or URL. The plugin fetches the story from Azure DevOps a
 
 ### 2 — Configure credentials
 
-Run the setup script from a terminal — it stores your org, project, and PAT as persistent environment variables:
+Open a terminal and paste the commands for your platform, replacing the placeholder values:
 
 **Windows (PowerShell):**
 
 ```powershell
-.\setup.ps1
+[System.Environment]::SetEnvironmentVariable("ADO_ORG",     "your-org-name",     "User")
+[System.Environment]::SetEnvironmentVariable("ADO_PROJECT", "your-project-name", "User")
+[System.Environment]::SetEnvironmentVariable("ADO_PAT",     "your-pat-here",     "User")
 ```
 
-**macOS / Linux:**
+Stored as persistent user-level environment variables — survive reboots. Run once per machine.
+
+**macOS (Terminal):**
 
 ```bash
-chmod +x setup.sh && ./setup.sh
+echo '' >> ~/.zshrc
+echo '# ado-testcraft' >> ~/.zshrc
+echo 'export ADO_ORG="your-org-name"' >> ~/.zshrc
+echo 'export ADO_PROJECT="your-project-name"' >> ~/.zshrc
+echo 'export ADO_PAT="your-pat-here"' >> ~/.zshrc
+source ~/.zshrc
 ```
 
-- **Windows**: stored as user-level environment variables (survive reboots)
-- **macOS/Linux**: written to your shell profile (`~/.zshrc`, `~/.bashrc`, or `~/.profile` — auto-detected). The script outputs the exact file it wrote to; run `source <that file>` after setup, then restart Claude Code.
+> Replace `~/.zshrc` with `~/.bash_profile` if you use bash.
+
+**Linux (terminal):**
+
+```bash
+echo '' >> ~/.bashrc
+echo '# ado-testcraft' >> ~/.bashrc
+echo 'export ADO_ORG="your-org-name"' >> ~/.bashrc
+echo 'export ADO_PROJECT="your-project-name"' >> ~/.bashrc
+echo 'export ADO_PAT="your-pat-here"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+> Replace `~/.bashrc` with `~/.zshrc` if you use zsh.
+
+If you have cloned this repo, you can run the setup script instead: `.\setup.ps1` (Windows) or `chmod +x setup.sh && ./setup.sh` (macOS/Linux) — it prompts for values interactively and handles profile detection automatically.
 
 ### 3 — Install the plugin
 
@@ -52,7 +75,7 @@ chmod +x setup.sh && ./setup.sh
 /plugin install ado-testcraft@claude-plugins-official
 ```
 
-**VS Code extension:** type `/manage plugin` in the Claude Code chat panel, search for `ado-testcraft`, and click **Install**.
+**VS Code extension:** in the Claude Code chat panel, type `/` and select **Manage plugins** from the autocomplete menu. Search for `ado-testcraft` and click **Install**.
 
 ### 4 — Restart
 
